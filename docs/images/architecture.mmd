@@ -1,0 +1,20 @@
+---
+title: Agent log architecture
+---
+flowchart LR
+  AG["LangChain agent<br/>create_agent, LangGraph"]
+  subgraph pkg[langchain-mongodb-agent-log]
+    AD["Adapters<br/>middleware, callback, node"]
+    EN["AgentLog engine"]
+    WK["Daemon worker<br/>queue, batch insert"]
+    RT["AgentLogRetriever<br/>RRF, per-user filter"]
+  end
+  EMB["Voyage AI<br/>embeddings"]
+  DB[("MongoDB Atlas<br/>agent_log collection")]
+  AG --> AD
+  AD --> EN
+  EN --> WK
+  WK --> EMB
+  WK --> DB
+  RT --> DB
+  RT --> AG

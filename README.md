@@ -153,3 +153,7 @@ The full doc index: [`docs/README.md`](docs/README.md).
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE).
+
+## Architecture
+
+![Architecture](docs/images/architecture.svg)
